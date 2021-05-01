@@ -1,0 +1,103 @@
+/*
+* 初期設定
+*/
+
+:root{
+	--black: #212121;
+}
+
+*{
+	/* フォント */
+	font-family: "游ゴシック体", YuGothic, "游ゴシック", "YuGothic", "メイリオ", Meiryo, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	font-style: normal;
+
+	/* テキスト */
+	color: var(--black);
+
+	/* マージン・パディング */
+	margin: 0;
+	padding: 0;
+
+	/* インターフェース */
+	box-sizing: border-box;
+	
+	/* ボーダー */
+	border-style: solid;
+	border-width: 0;
+	border-color: var(--black);
+}
+
+head, style, script, meta, link, title, base{
+	display: none;
+}
+
+html, body{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+	overflow-y: scroll;
+}
+
+html, body, div, section, article, aside, nav, header, footer, p, h1, h2, h3, h4, h5, h6, address,
+hr, pre, blockquote, ol, ul, dl, dt, dd, figure, figcaption, img, iframe, embed, object, param,
+video, audio, source, canvas, map, area, form, fieldset, legend, label, input, button, select, datalist
+optgroup, option, textarea, keygen, output, progress, meter{
+	display: block;
+}
+
+ul, ol{
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	padding-inline-start: 40px;
+}
+
+li{
+	display: list-item;
+}
+
+a{
+	color: #1976D2;
+	text-decoration: none;
+}
+
+select, input, textarea{
+	border-width: 1px;
+}
+
+table{
+	display: table;
+	caption-side: top;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table, tbody, td, th, tr{
+	border-width: 1px;
+}
+
+tbody{
+	display: table-row-group;
+}
+
+tr{
+	display: table-row;
+}
+
+td, th{
+	display: table-cell;
+	vertical-align: inherit;
+}
+
+p{
+	margin-bottom: 10px;
+}
+
+p:last-child{
+	margin-bottom: 0;
+}
