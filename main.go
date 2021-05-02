@@ -12,23 +12,25 @@ import(
 
 type Config struct {
 	Port int `json:"port"`
+	API string `json:API`
 }
 var config Config
 
 func handler(response http.ResponseWriter, request *http.Request){
-	res.Header().Set("Content-Type", "text/html")
-	res.Header().Set("X-Frame-Options", "DENY")
-	res.Header().Set("X-XSS-Protection", "1; mode=block")
-	res.Header().Set("X-Content-Type-Options", "nosniff")
-	res.Header().Set("Content-Security-Policy", "default-src 'self'")
+	response.Header().Set("Content-Type", "text/html; charset=UTF-8")
+	response.Header().Set("X-Frame-Options", "DENY")
+	response.Header().Set("X-XSS-Protection", "1; mode=block")
+	response.Header().Set("X-Content-Type-Options", "nosniff")
+	response.Header().Set("Content-Security-Policy", "default-src 'self'")
 
 	var status = 404
-	const html = `<doctype html>
+	const html = `<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="/css/reset.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/title.js"></script>
+		<script src="/js/templete.js"></script>
 	</head>
 	<body>
 	</body>
@@ -38,7 +40,7 @@ func handler(response http.ResponseWriter, request *http.Request){
 	var content string
 
 	// 最初のスラッシュ削除しつつスライス？配列？に分割
-	var pathSplit = strings.Split(req.URL.Path[1:], "/")
+	var pathSplit = strings.Split(request.URL.Path[1:], "/")
 
 	switch(len(pathSplit)){
 	case 1:
@@ -82,11 +84,11 @@ func handler(response http.ResponseWriter, request *http.Request){
 			var index = strings.LastIndex(request.URL.Path, ".")
 			if(index != -1){
 				var extension = request.URL.Path[index:]
-				var mimeType = mime.TypeByExtension(extension)
-				res.Header().Set("Content-Type", mimeType)
+				var mimeType = mime.TypeByExtension(extension) + "; charset=UTF-8"
+				response.Header().Set("Content-Type", mimeType)
 			}else{
-				var mimeType = mime.TypeByExtension(".txt")
-				res.Header().Set("Content-Type", mimeType)
+				var mimeType = mime.TypeByExtension(".txt") + "; charset=UTF-8"
+				response.Header().Set("Content-Type", mimeType)
 			}
 
 			status = 200
@@ -95,7 +97,7 @@ func handler(response http.ResponseWriter, request *http.Request){
 	}
 
 	response.WriteHeader(status)
-	fmt.Fprintf(res, "%s", content)
+	fmt.Fprintf(response, "%s", content)
 }
 
 func main(){
