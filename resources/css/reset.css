@@ -27,6 +27,13 @@
 	border-style: solid;
 	border-width: 0;
 	border-color: var(--black);
+
+	/* Flexbox */
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	align-content: flex-start;
 }
 
 head, style, script, meta, link, title, base{

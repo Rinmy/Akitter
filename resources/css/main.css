@@ -1,0 +1,37 @@
+#content-wrap{
+	display: flex;
+	margin: 0 auto;
+	width: 1280px;
+	height: 100%;
+}
+
+#left-sidebar{
+	width: 25%;
+	height: 100%;
+	padding: 10px;
+	background-color: #3dc1ff;
+}
+
+.left-side-button{
+	display: block;
+	color: white;
+	font-weight: 700;
+	border-radius: 12px;
+	margin-bottom: 10px;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition-duration: 200ms;
+	transition-property: background-color;
+}
+.left-side-button:last-child{
+	margin-bottom: 0;
+}
+
+.left-side-button:hover{
+	background-color: #00b9ff;
+}
+
+#content{
+	width: 50%;
+	height: 100%;
+}
