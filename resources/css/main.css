@@ -9,7 +9,7 @@
 	width: 25%;
 	height: 100%;
 	padding: 10px;
-	background-color: #3dc1ff;
+	background-color: #81D4FA;
 }
 
 .left-side-button{
@@ -28,7 +28,7 @@
 }
 
 .left-side-button:hover{
-	background-color: #00b9ff;
+	background-color: #93D8FA;
 }
 
 #content{
