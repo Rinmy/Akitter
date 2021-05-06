@@ -4,17 +4,11 @@ import(
 	"fmt"
 	"io/ioutil"
 	"mime"
-	"encoding/json"
 	"strings"
 	"net/http"
 	"strconv"
+	"akitter/config"
 )
-
-type Config struct {
-	Port int `json:"port"`
-	API string `json:API`
-}
-var config Config
 
 func handler(response http.ResponseWriter, request *http.Request){
 	response.Header().Set("Content-Type", "text/html; charset=UTF-8")
@@ -31,6 +25,7 @@ func handler(response http.ResponseWriter, request *http.Request){
 		<link rel="stylesheet" href="/css/main.css">
 		<script src="/js/title.js"></script>
 		<script src="/js/templete.js"></script>
+		<script src="/js/url.js"></script>
 	</head>
 	<body>
 	</body>
@@ -101,16 +96,9 @@ func handler(response http.ResponseWriter, request *http.Request){
 }
 
 func main(){
-	var bytes, err = ioutil.ReadFile("./config.json")
+	var config, err = config.Load()
 	if(err != nil){
 		fmt.Println(err)
-		return
-	}
-
-	err = json.Unmarshal(bytes, &config)
-	if(err != nil){
-		fmt.Println(err)
-		return
 	}
 
 	var port = ":" + strconv.Itoa(config.Port)
